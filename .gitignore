@@ -1,0 +1,33 @@
+node_modules/
+.next/
+.env
+.env.local
+__pycache__/
+*.pyc
+.venv/
+backend/data/*.xlsx
+# Python virtual environments
+venv/
+.venv/
+backend/venv/
+backend/.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Node dependencies and builds
+node_modules/
+.next/
+dist/
+build/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Editor and OS files
+.vscode/
+.DS_Store

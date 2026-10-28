@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MarketLens tokens. Light mode is a cool "chart room" fog; dark mode is the night atlas. */
+:root {
+  --bg: 236 241 246;       /* fog */
+  --surface: 255 255 255;
+  --raised: 244 247 250;
+  --line: 214 222 232;
+  --ink: 20 33 61;         /* ink navy */
+  --muted: 98 113 136;
+  --amber: 214 140 32;     /* market light */
+  --teal: 31 138 125;      /* growth */
+  --rust: 192 77 52;       /* decline */
+  --navy: 20 33 61;
+  --map-land: 220 227 236;
+  --map-sea: 236 241 246;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 11 19 36;          /* night */
+  --surface: 17 28 50;
+  --raised: 24 38 66;
+  --line: 38 56 90;
+  --ink: 232 237 245;
+  --muted: 140 156 182;
+  --amber: 240 178 72;
+  --teal: 64 190 172;
+  --rust: 232 118 92;
+  --navy: 20 33 61;
+  --map-land: 30 46 78;
+  --map-sea: 11 19 36;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+body {
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "tnum" 1;
+}
+
+.num {
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--amber));
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* Markdown answers from the AI analyst */
+.prose-analyst p { margin: 0.5rem 0; line-height: 1.6; }
+.prose-analyst ul, .prose-analyst ol { margin: 0.4rem 0 0.6rem 1.2rem; }
+.prose-analyst ul { list-style: disc; }
+.prose-analyst ol { list-style: decimal; }
+.prose-analyst li { margin: 0.2rem 0; line-height: 1.55; }
+.prose-analyst strong { font-weight: 600; }
+.prose-analyst em { color: rgb(var(--muted)); }
+.prose-analyst code { font-family: "IBM Plex Mono", monospace; font-size: 0.85em; background: rgb(var(--raised)); padding: 0.1rem 0.3rem; border-radius: 4px; }
+.prose-analyst h3, .prose-analyst h4 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; margin: 0.8rem 0 0.3rem; }
+.prose-analyst table { width: 100%; font-size: 0.85rem; border-collapse: collapse; margin: 0.6rem 0; }
+.prose-analyst th, .prose-analyst td { border-bottom: 1px solid rgb(var(--line)); padding: 0.35rem 0.5rem; text-align: left; }
+
+/* Market light pulse on the map: the one ambient animation in the product */
+@keyframes glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+.market-glow { animation: glow 3.2s ease-in-out infinite; }
+
+input[type="range"] { accent-color: rgb(var(--amber)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
